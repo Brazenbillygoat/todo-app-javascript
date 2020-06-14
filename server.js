@@ -6,12 +6,10 @@ const port = process.env.PORT || 3000
 
 const publicDirectoryPath = path.join(__dirname, '../public')
 
-app.set('view engine', 'jade')
-
-app.use(express.static(publicDirectoryPath))
+app.use(express.static('./public'))
 
 app.get('/', (req, res) => {
-    res.json('index')
+    res.render('index')
 })
 
 app.listen(port, console.log(`Server is now running on port ${port}`))
