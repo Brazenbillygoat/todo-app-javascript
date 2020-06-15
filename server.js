@@ -20,7 +20,7 @@ const port = process.env.PORT || 3000
 
 //I made these paths variables bc I think it made the code look cleaner
 //and I may need to use them again.
-const publicDirectoryPath = path.join(__dirname, '../public')
+const publicDirectoryPath = path.join(__dirname, '/public')
 const viewsPath = path.join(__dirname, './views')
 
 //Setting the view engine and then helping that view engine find the views file.

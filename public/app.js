@@ -1,12 +1,15 @@
 console.log("hello")
 
-// const paragraph = document.createElement('p')
-// const text = document.createTextNode("hello")
+const paragraph = document.getElementById('todo-items')
+const text = document.createTextNode("goodbye")
+console.log(text)
 
-// // paragraph.addEventListener('load', (e) => {
-// //     e.preventDefault()
-// //     paragraph.appendChild(text)
-// // })
+paragraph.addEventListener('load', (e) => {
+    
+    console.log(text)
+    paragraph.appendChild(text)
+    e.preventDefault()
+})
 
 
 // paragraph.appendChild(text) = "testing"
