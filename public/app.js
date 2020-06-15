@@ -1,17 +1,18 @@
+
+const itemList = document.getElementById('todo-items')
+const text = document.createTextNode('goodbye')
+
 console.log("hello")
-
-const paragraph = document.getElementById('todo-items')
-const text = document.createTextNode("goodbye")
-console.log(text)
-
-paragraph.addEventListener('load', (e) => {
-    
+itemList.addEventListener("load", () => {
     console.log(text)
-    paragraph.appendChild(text)
-    e.preventDefault()
+    console.log("goodbye")
+    createItem()
 })
 
-
+function createItem() {
+    console.log('maybe')
+}
+console.log("hello")
 // paragraph.appendChild(text) = "testing"
 // const body = document.getElementById('body')
 // body.appendChild(paragraph)
