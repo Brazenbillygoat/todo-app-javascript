@@ -1,13 +1,33 @@
 
 // const itemList = document.getElementById('todo-items')
+document.addEventListener("click", (e) => {
+    //delete feature
+    if (e.target.classList.contains("delete-me")) {
+        if (confirm("do you really want to delete this item permenantly?")) {
+            axios.post('/delete-item', {id: e.target.getAttribute("data-id")})
+            .then(() => {
+                e.target.parentElement.parentElement.remove()
+            }).catch((err) => {
+                console.log('Please try again later')
+            })
+        }
+    }
 
+    //Update feature
+    if (e.target.classList.contains("edit-me")) {
+        const userInput = prompt("Enter your desired new text", e.target.parentElement.parentElement.querySelector(".item-text").innerHTML)
+        if (userInput && userInput.trim() !== "") {
+            axios.post('/update-item', { text: userInput, id: e.target.getAttribute("data-id")})
+            .then(() => {
+                e.target.parentElement.parentElement.querySelector(".item-text").innerHTML = userInput
+            }).catch((err) => {
+                console.log('Please try again later')
+            })
+        }
+    }
+})
+const update = document.getElementById('edit-button')
 
-// console.log(dbItems)
-// console.log("hello")
-// window.addEventListener("load", () => {
-
-//     createItem()
-// })
 
 // function createItem() {
 //     let readItems = 

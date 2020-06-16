@@ -31,6 +31,7 @@ app.set('views', viewsPath)
 //The second line tells express to add my form value to body and then to
 //the request object because express does not do this by default.
 app.use(express.static(publicDirectoryPath))
+app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 //Starting my CRUD methods
@@ -62,15 +63,17 @@ app.get('', (req, res) => {
                       return `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
                       <span class="item-text">${item.text}</span>
                       <div>
-                        <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
-                        <button class="delete-me btn btn-danger btn-sm">Delete</button>
+                        <button data-id="${item._id}" id="edit-button" class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
+                        <button data-id="${item._id}" class="delete-me btn btn-danger btn-sm">Delete</button>
                       </div>
                     </li>`
                   }).join(' ')}
                 </ul>
                 
               </div>
-              
+
+              <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+              <script src="/app.js"></script>
             </body>
             </html>)`
         )
@@ -84,4 +87,14 @@ app.post('/create-item', (req, res) => {
     })
 })
 
+app.post('/update-item', (req, res) => {
+  db.collection('items').findOneAndUpdate({_id: new mongodb.ObjectId(req.body.id)}, {$set: {text: req.body.text}}, () => {
+    res.send("Success")
+  })
+})
 
+app.post('/delete-item', (req,res) => {
+  db.collection('items').deleteOne({_id: new mongodb.ObjectId(req.body.id)}, () => {
+    res.send('Success')
+  })
+})

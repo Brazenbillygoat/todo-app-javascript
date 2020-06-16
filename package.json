@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon server.js -js -pug"
+    "dev": "nodemon server.js -L -js -pug"
   },
   "keywords": [],
   "author": "",
@@ -14,9 +14,10 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^3.5.9",
-    "pug": "^3.0.0"
+    "pug": "^3.0.0",
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    
   }
 }
