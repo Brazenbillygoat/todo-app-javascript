@@ -38,12 +38,13 @@ app.use(express.urlencoded({extended: false}))
 function passwordProtected(req, res, next) {
   res.set('WWW-Authenticate', 'Basic realm="Simple Todo App"')
   console.log(req.headers.authorization)
-  if (req.headers.authorization == "Basic dGVzdDpwYXNzd29yZA==") {
+  if (req.headers.authorization == "Basic dmVyeTppbXByZXNzaXZl") {
     next()
   } else {
     res.status(401).send('Authentication required')
   }
 }
+//Basic dGVzdDpwYXNzd29yZA==
 
 app.use(passwordProtected)
 
