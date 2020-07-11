@@ -46,7 +46,8 @@ function passwordProtected(req, res, next) {
 }
 //Basic dGVzdDpwYXNzd29yZA==
 
-//app.use(passwordProtected)
+// I commented this out so anybody could access it
+// app.use(passwordProtected)
 
 //Starting my CRUD methods
 app.get('', (req, res) => {
@@ -98,7 +99,7 @@ app.post('/create-item', (req, res) => {
 })
 
 app.post('/update-item', (req, res) => {
-  //const safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
+  const safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
   db.collection('items').findOneAndUpdate({_id: new mongodb.ObjectId(req.body.id)}, {$set: {text: safeText}}, () => {
     res.send("Success")
   })
