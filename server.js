@@ -46,7 +46,7 @@ function passwordProtected(req, res, next) {
 }
 //Basic dGVzdDpwYXNzd29yZA==
 
-app.use(passwordProtected)
+//app.use(passwordProtected)
 
 //Starting my CRUD methods
 app.get('', (req, res) => {
