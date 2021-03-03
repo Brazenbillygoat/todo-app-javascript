@@ -14,7 +14,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^3.5.9",
-    "pug": "^3.0.0",
+    "pug": "^3.0.1",
     "sanitize-html": "^1.26.0"
   },
   "devDependencies": {
